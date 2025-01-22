@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { Provider } from 'react-redux';
 
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
 import Calendar from './pages/Calendar';
 import Chart from './pages/Chart';
 import ECommerce from './pages/Dashboard/ECommerce';
@@ -17,6 +15,7 @@ import Tables from './pages/Tables';
 import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
+import { Provider } from 'react-redux';
 import store from './store/store';
 
 function App() {
@@ -34,9 +33,10 @@ function App() {
   return loading ? (
     <Loader />
   ) : (
-    <DefaultLayout>
-      <Provider store={store}>
-      <Routes>
+
+     <Provider store={store}>
+     <Routes>
+
         <Route
           index
           element={
@@ -58,19 +58,20 @@ function App() {
         <Route
           path="/profile"
           element={
-            <>
+            <DefaultLayout>
               <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <Profile />
-            </>
+             </DefaultLayout>
           }
         />
         <Route
           path="/forms/form-elements"
           element={
-            <>
+            <DefaultLayout> <>
               <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <FormElements />
             </>
+            </DefaultLayout>
           }
         />
         <Route
@@ -128,26 +129,18 @@ function App() {
           }
         />
         <Route
-          path="/auth/signin"
+          path="/login"
           element={
             <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="login" />
               <SignIn />
             </>
           }
         />
-        <Route
-          path="/auth/signup"
-          element={
-            <>
-              <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <SignUp />
-            </>
-          }
-        />
+      
       </Routes>
-      </Provider>
-    </DefaultLayout>
+     </Provider>
+
   );
 }
 

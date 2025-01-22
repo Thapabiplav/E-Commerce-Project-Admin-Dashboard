@@ -17,12 +17,14 @@ interface User{
 
 interface AuthState{
     user : User,
-    status : Status
+    status : Status,
+    token:string | null
 }
 
 const initialState:AuthState = {
     user : {} as User,
-    status : Status.LOADING
+    status : Status.LOADING,
+    token : null    
 }
 
 const authSlice = createSlice({
