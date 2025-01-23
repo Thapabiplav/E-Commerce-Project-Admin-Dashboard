@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import SidebarLinkGroup from './SidebarLinkGroup';
 import Logo from '../../images/logo/logo.svg';
+import { useAppDispatch } from '../../store/hooks';
+import { fetchOrders, fetchProducts, fetchUsers } from '../../store/dataSlice';
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -19,6 +21,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const [sidebarExpanded, setSidebarExpanded] = useState(
     storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true'
   );
+
+  const dispatch = useAppDispatch()
+  useEffect(()=>{
+    dispatch(fetchOrders())
+    dispatch(fetchProducts())
+    dispatch(fetchUsers())
+  },[])
 
   // close on click outside
   useEffect(() => {
