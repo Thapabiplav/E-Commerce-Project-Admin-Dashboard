@@ -9,16 +9,16 @@ import TableOne from '../../components/Tables/TableOne';
 import { useAppSelector } from '../../store/hooks';
 
 const ECommerce: React.FC = () => {
-  const {orders,products,users}=useAppSelector((state)=>state.datas)
-  const counts={
-    orderCount:orders.length ,
-    userCount:users.length,
-    productCount:products.length
-  }
+const {orders,products,users} = useAppSelector((state)=>state.datas)
+const counts = { 
+  ordersCount : orders.length, 
+  usersCount : users.length, 
+  productsCount: products.length
+}
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="Total orders" total={counts.orderCount}  levelUp>
+        <CardDataStats title="Total orders" total={counts.ordersCount} levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -37,7 +37,7 @@ const ECommerce: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Users" total={counts.userCount}  levelUp>
+        <CardDataStats title="Total Users" total={counts.usersCount}  levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="20"
@@ -60,7 +60,7 @@ const ECommerce: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Product" total={counts.orderCount} levelUp>
+        <CardDataStats title="Total Products" total={counts.productsCount} levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -79,6 +79,7 @@ const ECommerce: React.FC = () => {
             />
           </svg>
         </CardDataStats>
+   
       </div>
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">

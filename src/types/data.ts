@@ -7,7 +7,7 @@ export interface User{
   created_at:string
 }
 
-interface Category{
+export interface Category{
   id:string,
   categoryName:string
 }
@@ -60,11 +60,42 @@ export interface OrderData{
   orderStatus:OrderStatus
 }
 
- export interface InitialState{
+export interface SingleOrderItem{
+id:string,
+quantity:number,
+orderId:string,
+Product:{
+  id:string,
+  productName:string,
+  productTotalStockQty:number,
+  productImageUrl:string,
+  productPrice:number,
+  categoryId:string,
+  Category:{
+    categoryName ? :string
+  }
+},
+Order:{
+  id:string,
+  phoneNumber:number,
+  shippingAddress:string,
+  totalAmount:number,
+  paymentDetails:Payment,
+  orderStatus:OrderStatus,
+  Payment:{
+    paymentMethod:string,
+    PaymentStatus:string
+  }
+}
+}
+
+export interface InitialState{
   products:Product[],
   users:User[],
   orders:OrderData[],
   status: Status,
-  singleProduct:Product | null
+  categories:Category[],
+  singleProduct:Product | null,
+  singleOrder: SingleOrderItem[]
   
 }
